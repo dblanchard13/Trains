@@ -17,14 +17,17 @@
 
 <div id="trainSchedule">
  <h3>Current Train Schedule</h3>
-	<table>
+	<table class="table">
+	  <thead>
   		<tr>
   	 	 <th>Train Name</th>
   	 	 <th>Destination</th> 
   	 	 <th>Freq (Min)</th>
-  		  <th>Next Train</th>
-  		  <th>Minutes Away</th>
+  		 <th>Next Arrival</th>
+  		 <th>Minutes Away</th>
   		</tr>
+  	   </thead>
+  	   <tbody>
  		<tr>
  	  	 	<td></td>
  	  	 	<td></td> 
@@ -53,6 +56,7 @@
  			<td></td>
     		<td></td>    
   		</tr>
+  	</tbody>
  	</table>
 </div>
 
@@ -65,7 +69,7 @@
 		<input id="train-Input" type="text" name="trainName"><br><br>
 		Destination:<br>
 		<input id="destination-Input" type="text" name="destination"><br><br>
-		First Train Time:<br>
+		First Train Time (HH:mm - Military Time):<br>
 		<input id="arrival-Input" type="text" name="firstTrain"><br><br>
 		Frequency (Min):<br>
 		<input id="freq-Input" type="text" name="freq"><br><br>
@@ -80,3 +84,10 @@
 
 </body>
 </html>
+
+<!--- 
+
+Time and Freq
+
+Time - pulls current time from Clock?
+Freq - Interval from first time departure
