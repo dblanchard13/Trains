@@ -2,77 +2,81 @@
 <html lang = "en-US">
 <head>
 <meta charset ="UTF-8">
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+
 <link rel ="stylesheet" type="text/css" href="assets\style.css">
-<link rel ="stylesheet" type="text/css" href="assets\style.css">
+
+
 	<title>Choo Choo</title>
 </head>
 <body>
 <h1>Train Schedule</h1>
 
 <div id="trainSchedule">
-<h3>Current Train Schedule</h3>
-<table>
-  <tr>
-    <th>Train Name</th>
-    <th>Destination</th> 
-    <th>Freq (Min)</th>
-    <th>Next Train</th>
-    <th>Minutes Away</th>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td> 
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td> 
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-   <tr>
-    <td></td>
-    <td></td> 
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td> 
-    <td></td>
- 	<td></td>
-    <td></td>    
-  </tr>
-</table>
+ <h3>Current Train Schedule</h3>
+	<table>
+  		<tr>
+  	 	 <th>Train Name</th>
+  	 	 <th>Destination</th> 
+  	 	 <th>Freq (Min)</th>
+  		  <th>Next Train</th>
+  		  <th>Minutes Away</th>
+  		</tr>
+ 		<tr>
+ 	  	 	<td></td>
+ 	  	 	<td></td> 
+ 	  	 	<td></td>
+ 	  	 	<td></td>
+ 	  		<td></td>
+ 		</tr>
+  		<tr>
+    		<td></td>
+    		<td></td> 
+    		<td></td>
+    		<td></td>
+    		<td></td>
+  		</tr>
+   		<tr>
+    		<td></td>
+    		<td></td> 
+    		<td></td>
+    		<td></td>
+    		<td></td>
+  		</tr>
+  		<tr>
+    		<td></td>
+    		<td></td> 
+    		<td></td>
+ 			<td></td>
+    		<td></td>    
+  		</tr>
+ 	</table>
 </div>
 
-<div id="trainForm">
-<h2> Add a Train </h2>
-<form>
-Train Name:<br>
-<input type="text" name="trainName"><br>
-Destination:<br>
-<input type="text" name="destination"><br>
-First Train Time:<br>
-<input type="text" name="firstTrain"><br>
-Frequency(Min):<br>
-<input type="text" name="freq"><br><br>
-<input type="submit" value="submit">
-</form>
+<br>
+
+<div id="trainAdd">
+	<h2 id="addHeader">Add a Train</h2>
+	<form id="trainForm">
+		Train Name:<br>
+		<input id="train-Input" type="text" name="trainName"><br><br>
+		Destination:<br>
+		<input id="destination-Input" type="text" name="destination"><br><br>
+		First Train Time:<br>
+		<input id="arrival-Input" type="text" name="firstTrain"><br><br>
+		Frequency (Min):<br>
+		<input id="freq-Input" type="text" name="freq"><br><br>
+		<br>
+		<button id="submit-Btn" type="submit">Add a Train</button>
+	</form>
 </div>
 
 
-<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script type="text/javascript">
+<script src="assets\script.js"></script>
 
-function trainBoard {
-//dynamic update
-}
 
-</script>
 </body>
 </html>

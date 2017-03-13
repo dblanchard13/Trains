@@ -4,6 +4,33 @@ td {
     padding: 8px;
 }
 
+td, tr {
+
+}
+
+tr {
+
+}
+
 tr:nth-child(odd) {
     background-color: #dddddd;
+}
+
+#trainAdd {
+	border:1px;
+	border-style:solid;
+	
+}
+
+#trainForm, #addHeader {
+	margin-left:10px; 
+}
+
+#trainForm {
+	margin-bottom:10px;
+}
+
+#addHeader {
+	background-color:blue;
+	color:white;
 }
