@@ -18,11 +18,8 @@
 
   		var $name = $("#train-Input").val().trim();
   		var $destination = $("#destination-Input").val().trim();
-  		var $arrival = ("#arrival-Input").val().trim(),
+  		var $arrival = $("#arrival-Input").val().trim();
   		var $freq = $("#freq-Input").val().trim();
-
-  		
-  		console.log($arrival)
 
   		var uTrain = {
   		uName: $name,
@@ -32,8 +29,6 @@
   		};
 
   		database.ref().push(uTrain);
-
-  		
 
   		alert("Train Succesfully Added")
 
@@ -47,15 +42,22 @@
    });
 
   
-  	database.ref().on("child_added", function(){
-  	console.log(childSnapshot.val());
- 	 
-  		var tName = childSnapshot.val().name;
-  		var tDestination = childSnapshot.val().destination;
-  		var tArrival = childSnapshot.val().arrival;
-  		var tFreq = childSnapshot.val().freq;
+  	database.ref().on("child_added", function(childSnapshot){
 
-  		var momentTime = moment(tArrival, "HH:mm").subtract(1, "years");
+  		console.log(childSnapshot.val());
+ 	 
+  		var tName = childSnapshot.val().uName;
+  		var tDestination = childSnapshot.val().uDestination;
+  		var tArrival = childSnapshot.val().uArrival;
+  		var tFreq = childSnapshot.val().uFreq;
+
+  		// console.log(tName);
+  		// console.log(tDestination);
+  		// console.log(tArrival);
+
+
+
+  		var momentTime = moment(tArrival, "HH:mm");
   		console.log(momentTime)
 
   		var currentTime = moment();
@@ -63,17 +65,28 @@
   		var tRemainder = diffTime % tFreq;
  		console.log(tRemainder);
 
+ 		// console.log(tFreq);
+ 		// console.log(diffTime);
 
   		var minsAway =	tFreq - tRemainder;
   		var nextTrain = moment().add(minsAway, "minutes");
   		var nextTrainMoment = moment(nextTrain).format("hh:mm a");
+  		// console.log(minsAway);
+
+  		// var row = $("<tr>");
+  		// row.append("<td>" + childSnapshot.val().tName + "</td>");
+  		// row.append("<td>" + childSnapshot.val().tDestination + "</td>");
+  		// row.append("<td>" + childSnapshot.val().tFreq + "</td>");
+  		// row.append("<td>" + nextTrainMoment + "</td>");
+  		// row.append("<td>" + minsAway + "</td>" + "</tr>");
+  		// $("#table").append(row);
 
 
-  		$("#table > tbody").append("<tr><td>" + tName "</td><td>" + tDestination + 
-  		"</td><td>" + tFreq + "</td><td>" + nextTrainMoment + "</td><td>" + minsAway + "</td></tr>");
-
+  		  $("#table > tbody").append("<tr><td>" + tName + "</td><td>" + tDestination + "</td><td>" +
+ 	 		 tFreq + "</td><td>" + nextTrainMoment + "</td><td>" + minsAway + "</td></tr>");
+	
   	});
 
   
 
-console.log("JS Link Check")
+// console.log("JS Link Check")
