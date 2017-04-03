@@ -1,3 +1,18 @@
+// While it may not seem imperative for smaller programs, 
+// you should get in the habit of wrapping your js code in either a 
+
+// $(document).ready(function(){
+//  // code goes here
+// })
+
+// or an IIFE (immediately invoked function expression)
+
+// ;(function(){
+//  // code goes here
+// })()
+
+// One of the most important reasons for that is security - because right now your global variables (ie `database`)
+// can be tampered with through the console by a malicious visitor to your train schedule app 😮
 
 
   // Initialize Firebase
@@ -30,21 +45,23 @@
 
   		database.ref().push(uTrain);
 
-  		alert("Train Succesfully Added")
+      // you generally want to stay away from using `alert` statements. Instead, you can just update the 
+      // html with the new train to signal that it was successfully added
+  		// alert("Train Succesfully Added")
 
   		$("#train-Input").val("");
   		$("#destination-Input").val("");
   		$("#arrival-Input").val("");
   		$("#freq-Input").val("");
 
-  		return false;
+      // Not sure what the intention was for this line, but it can be safely removed without breaking functionality
+  		// return false;
 
    });
 
-  
   	database.ref().on("child_added", function(childSnapshot){
-
-  		console.log(childSnapshot.val());
+      // it's best practice to remove console.log statements from your production code
+  		// console.log(childSnapshot.val());
  	 
   		var tName = childSnapshot.val().uName;
   		var tDestination = childSnapshot.val().uDestination;
@@ -58,12 +75,12 @@
 
 
   		var momentTime = moment(tArrival, "HH:mm");
-  		console.log(momentTime)
+  		// console.log(momentTime)
 
   		var currentTime = moment();
   		var diffTime = moment().diff(moment(momentTime), "minutes");
   		var tRemainder = diffTime % tFreq;
- 		console.log(tRemainder);
+ 		// console.log(tRemainder);
 
  		// console.log(tFreq);
  		// console.log(diffTime);
@@ -81,6 +98,24 @@
   		// row.append("<td>" + minsAway + "</td>" + "</tr>");
   		// $("#table").append(row);
 
+      // instead of concatenating and appending a large string to the table body
+      // it's easier to read and understand if you follow a pattern not dissimilar
+      // to the one you were using above this that's commented out. And, speaking
+      // of comments, you generally want to remove commented out code that's not being used.
+
+      // Another option would be to create an array of data points you want to put in a row and 
+      // loop over it like so:
+
+      // var tableRow = $('<tr>')
+      // var rowElements = [tName, tDestination, tFreq, nextTrainMoment, minsAway]
+      
+      // rowElements.forEach(function(element) {
+      //   var td = $('<td>')
+      //   td.text(element)
+      //   tableRow.append(td)
+      // })
+      
+      // $("#table > tbody").append(tableRow);
 
   		  $("#table > tbody").append("<tr><td>" + tName + "</td><td>" + tDestination + "</td><td>" +
  	 		 tFreq + "</td><td>" + nextTrainMoment + "</td><td>" + minsAway + "</td></tr>");
